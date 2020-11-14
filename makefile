@@ -10,7 +10,7 @@ CXXFLAGS = -std=c++11
 
 #CXXFLAGS = -std=c++11 -Wall -Wextra -Werror
 
-BINARIES = project2_first project2_second
+BINARIES = project2_first.out project2_second.out
 
 all: ${BINARIES}
 
