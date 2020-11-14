@@ -19,8 +19,8 @@ Dictionary::Dictionary(string fname, int tsize)
     int maxIndex = 0;
     int reHashes[21]; //rehashes used to keep track of amount of rehashes
     fill_n(reHashes,21,0);
-    ifstream myfile(fname);
-    if (myfile.is_open()){ // first loop assigns initial hashes 
+    ifstream myfile("cool.txt");
+    if(myfile.is_open()){ // first loop assigns initial hashes 
         while (getline(myfile, line)){
             index = (h1.hash(line)) % n;
             allocation[index].push_back(line);
@@ -123,4 +123,18 @@ Dictionary Dictionary::readFromFile(string fname){
         toWrite<<line<<endl;
     }
     return Dictionary("nice.txt", c);
+};
+int Dictionary::getLength(string fname){
+    ifstream t1(fname);
+    ofstream t2("cool.txt");
+    string t;
+    int tmp;
+    if(t1.is_open()){ 
+        while (getline(t1, t)){
+            t2<<t<<endl;
+            tmp++;
+        }
+        t1.close();
+    }
+    return tmp;
 };

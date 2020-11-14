@@ -1,10 +1,29 @@
-all: project2_first.out project2_second.out
+CXX=clang++
+# CXX=g++
 
-project2_first.out: <list of .cpp files required for project2_first.out>
-	g++ -std=c++11 $^ -o $@
+# We have -Wno-unused-parameter so that the compiler
+# doesn't complain too much about our stubs.
 
-project2_second.out: <list of .cpp files reuired for project2_second.out>
-	g++ -std=c++11 $^ -o $@
+CXXFLAGS = -std=c++11
+
+# Change to this before final submission:
+
+#CXXFLAGS = -std=c++11 -Wall -Wextra -Werror
+
+BINARIES = project2_first project2_second
+
+all: ${BINARIES}
+
+project2_first: project2_first.o Dictionary.o hash24.o 
+	${CXX} $^ -o $@
+
+project2_second: project2_second.o Dictionary.o hash24.o
+	${CXX} $^ -o $@
+
+
+tests: ${BINARIES}
+	./project2_first.out
+	./project2_second.out
 
 clean:
-	rm -f *.out
+	/bin/rm -f ${BINARIES} *.o

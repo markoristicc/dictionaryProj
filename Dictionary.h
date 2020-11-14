@@ -8,6 +8,7 @@ class Dictionary{
         bool find(std::string word);
         void writeToFile(std::string fname);
         static Dictionary readFromFile(std::string fname);
+        int getLength(std::string fname);
     private:
         std::vector<std::vector<std::string>> table;
         std::vector<Hash24*> hashes; 
